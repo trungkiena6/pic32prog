@@ -957,7 +957,7 @@ found:
     ret = libusb_detach_kernel_driver(a->usbdev, 0);
     if (ret != 0) {
         fprintf(stderr, "Error detaching kernel driver: %d\n",
-            ret;
+            ret);
         libusb_close(a->usbdev);
         exit(-1);
     }

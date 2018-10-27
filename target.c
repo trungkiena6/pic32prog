@@ -388,7 +388,7 @@ found:
 
 /*
  * Open serial adapter.
- * Use Arduino-compatible protocol (stk500v2) by default.
+ * Use Arduino-compatible protocol (AN1388) by default.
  * To select other protocols, add a prefix to the port name,
  * like "bitbang:COM5".
  */
@@ -397,11 +397,13 @@ static adapter_t *open_serial_adapter(const char *port_name, int baud_rate)
     const char *prefix, *delimiter;
     int prefix_len, len, i;
 
+    printf("Port name %s\r\n", port_name);
+
     /* Get protocol prefix. */
     delimiter = strchr(port_name, ':');
     if (! delimiter) {
-        /* Use stk500v2 protocol by default. */
-        return serial_tab[0].func(port_name, baud_rate);
+        /* Use AN1388 protocol by default. */
+        return serial_tab[1].func(port_name, baud_rate);
     }
     prefix_len = delimiter - port_name;
     prefix = port_name;
