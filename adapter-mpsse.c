@@ -167,8 +167,8 @@ static void bulk_write(mpsse_adapter_t *a, unsigned char *output, int nbytes)
         nbytes, &bytes_written, 1000);
 
     if (ret != 0) {
-        fprintf(stderr, "usb bulk write failed: %d: %s\n",
-            ret, libusb_strerror(ret));
+        fprintf(stderr, "usb bulk write failed: %d\n",
+            ret);
         exit(-1);
     }
     if (bytes_written != nbytes)
@@ -907,8 +907,8 @@ adapter_t *adapter_open_mpsse(int vid, int pid, const char *serial)
     int ret = libusb_init(&a->context);
 
     if (ret != 0) {
-        fprintf(stderr, "libusb init failed: %d: %s\n",
-            ret, libusb_strerror(ret));
+        fprintf(stderr, "libusb init failed: %d\n",
+            ret);
         exit(-1);
     }
 
@@ -956,8 +956,8 @@ found:
 
     ret = libusb_detach_kernel_driver(a->usbdev, 0);
     if (ret != 0) {
-        fprintf(stderr, "Error detaching kernel driver: %d: %s\n",
-            ret, libusb_strerror(ret));
+        fprintf(stderr, "Error detaching kernel driver: %d\n",
+            ret;
         libusb_close(a->usbdev);
         exit(-1);
     }
