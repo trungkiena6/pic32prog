@@ -397,7 +397,7 @@ static adapter_t *open_serial_adapter(const char *port_name, int baud_rate)
     const char *prefix, *delimiter;
     int prefix_len, len, i;
 
-    printf("Port name %s\r\n", port_name);
+    printf("Input parameter port name %s\r\n", port_name);
 
     /* Get protocol prefix. */
     delimiter = strchr(port_name, ':');
